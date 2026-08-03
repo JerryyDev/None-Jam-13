@@ -2,8 +2,8 @@
 
 velh                = 0;
 velv                = 0;
-velh_max            = 1;
-velv_max            = 1;
+velh_max            = 1.2;
+velv_max            = 1.2;
 
 
 tempo_balanco = 0;

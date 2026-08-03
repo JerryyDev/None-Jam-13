@@ -1,17 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_tiro_agua",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_peixe_fogo",
+  "eventList":[],
   "managed":true,
-  "name":"obj_tiro_agua",
+  "name":"obj_peixe_fogo",
   "overriddenProperties":[],
   "parent":{
-    "name":"Tiros",
-    "path":"folders/Objetos/Game/Tiros.yy",
+    "name":"Enemys",
+    "path":"folders/Objetos/Game/Enemys.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_enemy_father",
+    "path":"objects/obj_enemy_father/obj_enemy_father.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -30,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_tiro_agua",
-    "path":"sprites/spr_tiro_agua/spr_tiro_agua.yy",
+    "name":"spr_peixe_fogo",
+    "path":"sprites/spr_peixe_fogo/spr_peixe_fogo.yy",
   },
   "spriteMaskId":null,
   "visible":true,
