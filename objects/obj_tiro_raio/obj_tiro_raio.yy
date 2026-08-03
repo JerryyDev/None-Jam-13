@@ -27,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_tiro_raio",
+    "path":"sprites/spr_tiro_raio/spr_tiro_raio.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

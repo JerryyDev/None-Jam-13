@@ -50,4 +50,12 @@ movimento = function(){
     y += velv;
 }
 
+
+Pimenta_create = function(){
+    if(!instance_exists(obj_pimenta_pimentinha)){
+        var margem_p = 20;
+        instance_create_layer(x + margem_p, y, layer, obj_pimenta_pimentinha);
+    }
+}
+
 #endregion
