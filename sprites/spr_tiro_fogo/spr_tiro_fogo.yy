@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Tiros",
-    "path":"folders/Sprites/Duck/Tiros.yy",
+    "path":"folders/Sprites/Game/Tiros.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
