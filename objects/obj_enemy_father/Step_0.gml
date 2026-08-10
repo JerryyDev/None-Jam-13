@@ -14,10 +14,24 @@ if (movendo) {
 
 } else {
     tempo_balanco = 0;
-    image_xscale = lerp(image_xscale, sign(image_xscale) == 0 ? 1 : sign(image_xscale), 0.2);
-    image_yscale = lerp(image_yscale, 1, 0.2);
 }
 
+
+var _dir_olhar = (image_xscale < 0) ? -1 : 1;
+
+image_xscale = lerp(image_xscale, _dir_olhar, 0.2);
+image_yscale = lerp(image_yscale, 1, 0.2);
+
+
+if(!instance_exists(obj_barra_vida)){
+    instance_create_layer(x,y,"Enemys",obj_barra_vida);
+}
+
+
+if (hp <= 0) {
+    global.kills += 1;
+    instance_destroy();
+}
 
 
 var _distancia_minima = 16; 

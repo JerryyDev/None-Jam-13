@@ -17,10 +17,17 @@ down                = false;
 
 margem_p = 20;
 pimenta_angulo = 0;
+draw_xscale = 1;
+draw_yscale = 1;
+
+
+hp_max = 100;
+hp = hp_max;
 
 #endregion
 
-
+minha_barra = instance_create_layer(x, y + 15, "BarraDeVida", obj_barra_vida);
+minha_barra.dono = id;
 
 #region Métodos
 
@@ -42,40 +49,50 @@ movimento = function(){
     velh = (right - left) * velh_max;
     velv = (down - up) * velv_max;
     
-
-    
-    x += velh;
-    y += velv; 
-   
-    var _half_width  = sprite_width / 2;
-    var _half_height = sprite_height / 2;
-        
-    x = clamp(x, _half_width, room_width - _half_width);
-    y = clamp(y, _half_height, room_height - _half_height);
-    
-    
-
     
     var _esta_andando = (velh != 0 || velv != 0);
 
     if (_esta_andando) {
-       tempo_balanco += 0.2;
+        tempo_balanco += 0.2;
+        
+        if(!instance_exists(obj_vsfx_move)){
+            instance_create_layer(x,y,"Vsfx",obj_vsfx_move);
+        }
+   
+        var _escala_base = 1;
+        var _deformacao = sin(tempo_balanco) * 0.12;
+   
+        var _dir = (velh != 0) ? sign(velh) : sign(draw_xscale);
        
-       image_yscale = 1 + sin(tempo_balanco) * 0.08;
-       image_xscale = 1 - sin(tempo_balanco) * 0.08;
+        draw_xscale = _dir * (_escala_base + _deformacao);
+        draw_yscale = _escala_base - _deformacao;
    
     } else {
-       tempo_balanco = 0;
-       image_xscale = lerp(image_xscale, 1, 0.2);
-       image_yscale = lerp(image_yscale, 1, 0.2);
-       image_angle  = lerp(image_angle, 0, 0.2);
+        tempo_balanco = 0;
+        draw_xscale = lerp(draw_xscale, 1, 0.1);
+        draw_yscale = lerp(draw_yscale, 1, 0.1);
+    }
+   
+    image_xscale = 1;
+    image_yscale = 1;
+    
+    if (place_meeting(x + velh, y, obj_wall)) {
+         while (!place_meeting(x + sign(velh), y, obj_wall)) {
+           x += sign(velh);
+        }
+        velh = 0;
     }
     
-    if(velh < 0){
-        image_xscale = -1;
-    }else if(velh > 0){
-        image_xscale = 1;
+    x += velh; 
+  
+    if (place_meeting(x, y + velv, obj_wall)) {
+        while (!place_meeting(x, y + sign(velv), obj_wall)) {
+           y += sign(velv);
+        }
+        velv = 0;
     }
+    
+    y += velv;
 }
 
 

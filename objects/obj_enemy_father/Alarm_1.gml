@@ -1,2 +1,2 @@
 movendo = false;
-alarm[0] = room_speed * random_range(1.5, 3);
+alarm[0] = room_speed * random_range(1.5, 2);
